@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rayan Sebti — Moving deals and people forward</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+  /* ============================================================
+     PALETTE — inspired by Brazil
+     ink        #14342b  deep forest green, warm near-black
+     paper      #fbfaf2  warm off-white
+     green      #1a9e4b  Brazilian green
+     yellow     #ffce2e  Brazilian yellow
+     blue       #1c4fbf  Brazilian blue
+     blue-soft  #2f6fe0
+     ============================================================ */
+  :root{
+    --ink:#14342b;
+    --paper:#fbfaf2;
+    --green:#1a9e4b;
+    --yellow:#ffce2e;
+    --blue:#1c4fbf;
+    --blue-soft:#2f6fe0;
+    --ink-soft:#4f6258;
+    --line:rgba(20,52,43,.12);
+    --max:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{font-family:'Fraunces',Georgia,serif;}
+
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,250,242,.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .brand{font-family:'Fraunces';font-weight:700;font-size:1.15rem;letter-spacing:-.01em;}
+  .brand span{color:var(--green);}
+  .navlinks{display:flex;gap:26px;}
+  .navlinks a{
+    color:var(--ink-soft);text-decoration:none;font-size:.92rem;font-weight:500;
+    transition:color .2s;
+  }
+  .navlinks a:hover{color:var(--green);}
+  @media(max-width:720px){.navlinks{display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding:84px 0 72px;overflow:hidden;}
+  .blob{position:absolute;border-radius:50%;filter:blur(8px);opacity:.85;z-index:0;}
+  .blob.b1{width:320px;height:320px;background:radial-gradient(circle at 30% 30%,var(--yellow),var(--green));top:-80px;right:-70px;}
+  .blob.b2{width:240px;height:240px;background:radial-gradient(circle at 40% 40%,var(--blue),var(--blue-soft));bottom:-110px;left:-70px;opacity:.5;}
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.45fr .8fr;gap:44px;align-items:center;}
+  @media(max-width:840px){.hero .wrap{grid-template-columns:1fr;}}
+
+  .eyebrow{
+    display:inline-block;font-family:'Outfit';font-weight:600;font-size:.78rem;
+    text-transform:uppercase;letter-spacing:.14em;color:var(--green);
+    background:rgba(26,158,75,.1);padding:6px 14px;border-radius:999px;margin-bottom:22px;
+  }
+  h1{font-size:clamp(2.6rem,5.6vw,4.1rem);line-height:1.03;font-weight:600;letter-spacing:-.02em;}
+  h1 .hl{
+    background:linear-gradient(120deg,var(--green),var(--yellow));
+    -webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic;
+  }
+  /* EDITABLE TAGLINE — swap per application round.
+     Neutral B2B (default) is live below.
+     Enterprise AE:  "Consulting background with commercial instincts. I like complex deals with a lot of people in the room, and bringing them to a yes."
+     Relationship:   "I connect with people easily and I keep things moving. Moving from consulting into sales, where the relationship really is the work." */
+  .tagline{
+    margin:26px 0 6px;font-size:1.2rem;color:var(--ink-soft);max-width:34ch;font-weight:400;
+  }
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px;}
+  .btn{
+    display:inline-block;text-decoration:none;font-weight:600;font-size:.98rem;
+    padding:13px 26px;border-radius:999px;transition:transform .15s,box-shadow .2s;
+  }
+  .btn-primary{background:var(--green);color:#fff;box-shadow:0 8px 22px rgba(26,158,75,.32);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(26,158,75,.4);}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.6px solid var(--ink);}
+  .btn-ghost:hover{transform:translateY(-2px);background:var(--ink);color:var(--paper);}
+
+  /* hero photo — smaller, beside the text */
+  .hero-photo{
+    position:relative;aspect-ratio:4/5;max-width:300px;width:100%;justify-self:end;
+    border-radius:22px;overflow:hidden;
+    background:linear-gradient(135deg,var(--blue),var(--green));
+    box-shadow:0 20px 50px rgba(20,52,43,.22);
+    display:flex;align-items:center;justify-content:center;
+    transform:rotate(2deg);
+  }
+  @media(max-width:840px){.hero-photo{justify-self:start;transform:rotate(0);max-width:240px;}}
+  .hero-photo::after{content:"PROFILE PHOTO";font-family:'Outfit';font-weight:600;
+    color:rgba(255,255,255,.9);letter-spacing:.1em;font-size:.76rem;text-align:center;padding:0 20px;}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:74px 0;}
+  .sec-label{
+    font-family:'Outfit';font-weight:600;font-size:.78rem;text-transform:uppercase;
+    letter-spacing:.16em;color:var(--blue);margin-bottom:14px;display:flex;align-items:center;gap:10px;
+  }
+  .sec-label::before{content:"";width:26px;height:2px;background:var(--blue);display:inline-block;}
+  h2{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:600;letter-spacing:-.015em;line-height:1.08;margin-bottom:26px;}
+
+  /* ---------- ABOUT ---------- */
+  .about p{font-size:1.12rem;max-width:62ch;margin-bottom:18px;color:var(--ink);}
+  .about p.last{color:var(--ink-soft);font-style:italic;}
+
+  /* ---------- PROOF ---------- */
+  .proof{background:var(--ink);color:var(--paper);}
+  .proof .sec-label{color:var(--yellow);}
+  .proof .sec-label::before{background:var(--yellow);}
+  .proof h2{color:var(--paper);}
+  .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px;}
+  @media(max-width:840px){.proof-grid{grid-template-columns:1fr;}}
+  .proof-card{
+    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+    border-radius:18px;padding:28px 24px;transition:transform .2s,border-color .2s;
+  }
+  .proof-card:hover{transform:translateY(-4px);border-color:var(--yellow);}
+  .proof-card h3{font-size:1.22rem;margin-bottom:12px;color:var(--yellow);font-weight:600;}
+  .proof-card p{font-size:.98rem;color:rgba(251,250,242,.82);}
+
+  /* ---------- WHAT I'M LOOKING FOR ---------- */
+  .looking{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+  @media(max-width:720px){.looking{grid-template-columns:1fr;}}
+  .pill-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px;}
+  .pill{background:rgba(28,79,191,.1);color:var(--blue);font-weight:600;font-size:.9rem;
+    padding:8px 16px;border-radius:999px;}
+
+  /* ---------- STRENGTHS ---------- */
+  .strengths{background:linear-gradient(180deg,#fff8e1,var(--paper));}
+  .str-intro{color:var(--ink-soft);max-width:54ch;margin-bottom:34px;font-size:1.05rem;}
+  .str-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  @media(max-width:720px){.str-grid{grid-template-columns:1fr;}}
+  .str-card{
+    background:#fff;border-radius:16px;padding:22px;border:1px solid var(--line);
+    position:relative;transition:transform .2s;
+  }
+  .str-card:hover{transform:translateY(-3px);}
+  .str-num{font-family:'Fraunces';font-style:italic;font-weight:600;font-size:1.4rem;color:var(--green);}
+  .str-card h3{font-size:1.1rem;margin:4px 0 8px;font-weight:600;}
+  .str-card p{font-size:.92rem;color:var(--ink-soft);}
+  .str-card:nth-child(2) .str-num{color:var(--yellow);}
+  .str-card:nth-child(3) .str-num{color:var(--blue);}
+  .str-card:nth-child(4) .str-num{color:var(--green);}
+  .str-card:nth-child(5) .str-num{color:var(--yellow);}
+  .str-card:nth-child(6) .str-num{color:var(--blue);}
+  .str-download{margin-top:28px;}
+  .str-download a{
+    display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+    color:var(--blue);font-weight:600;font-size:.96rem;border:1.6px solid var(--blue);
+    padding:11px 22px;border-radius:999px;transition:all .2s;
+  }
+  .str-download a:hover{background:var(--blue);color:#fff;transform:translateY(-2px);}
+
+  /* ---------- VIDEO ---------- */
+  .video-shell{
+    aspect-ratio:16/9;border-radius:22px;overflow:hidden;
+    background:linear-gradient(135deg,var(--green),var(--blue));
+    display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;
+    box-shadow:0 18px 50px rgba(20,52,43,.18);margin-top:8px;
+  }
+  .video-shell .play{width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.92);
+    display:flex;align-items:center;justify-content:center;}
+  .video-shell .play::after{content:"";border-left:22px solid var(--green);border-top:13px solid transparent;
+    border-bottom:13px solid transparent;margin-left:5px;}
+  .video-shell span{color:#fff;font-family:'Outfit';font-weight:600;letter-spacing:.08em;font-size:.82rem;}
+  /* To go live, replace the .video-shell div with:
+     <iframe src="YOUR_LOOM_OR_YOUTUBE_EMBED" allowfullscreen
+       style="width:100%;aspect-ratio:16/9;border:0;border-radius:22px;"></iframe> */
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials{background:var(--ink);color:var(--paper);}
+  .testimonials .sec-label{color:var(--yellow);}
+  .testimonials .sec-label::before{background:var(--yellow);}
+  .testimonials h2{color:var(--paper);}
+  .quote-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:8px;}
+  .quote-card{
+    background:rgba(255,255,255,.05);border:1px dashed rgba(255,255,255,.28);
+    border-radius:18px;padding:28px;position:relative;
+  }
+  .quote-card .mark{font-family:'Fraunces';font-size:3rem;line-height:.5;color:var(--yellow);}
+  /* PLACEHOLDER — paste your real manager feedback here.
+     Replace the .placeholder paragraph with .qquote, then fill .qname / .qrole. */
+  .quote-card .placeholder{color:rgba(251,250,242,.5);font-style:italic;margin:14px 0 18px;font-size:1rem;}
+  .quote-card .qquote{margin:14px 0 18px;font-size:1.04rem;color:var(--paper);}
+  .qname{font-weight:600;color:var(--yellow);font-size:.95rem;}
+  .qrole{color:rgba(251,250,242,.6);font-size:.85rem;}
+
+  /* ---------- BEYOND WORK ---------- */
+  .beyond .wrap{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;}
+  @media(max-width:840px){.beyond .wrap{grid-template-columns:1fr;}}
+  .beyond p{font-size:1.08rem;margin-bottom:16px;max-width:54ch;}
+  .photo-stack{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .ph{aspect-ratio:3/4;border-radius:18px;display:flex;align-items:center;justify-content:center;
+    color:rgba(255,255,255,.9);font-family:'Outfit';font-weight:600;font-size:.72rem;letter-spacing:.08em;
+    text-align:center;padding:0 14px;box-shadow:0 14px 36px rgba(20,52,43,.16);}
+  .ph.a{background:linear-gradient(135deg,var(--green),#7bd9a3);transform:rotate(-3deg);}
+  .ph.b{background:linear-gradient(135deg,var(--yellow),var(--green));transform:rotate(3deg);margin-top:24px;}
+  .ph img{width:100%;height:100%;object-fit:cover;border-radius:18px;}
+
+  /* ---------- LANGUAGES ---------- */
+  .lang-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px;}
+  .lang{flex:1;min-width:150px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;}
+  .lang strong{font-family:'Fraunces';font-size:1.3rem;font-weight:600;display:block;}
+  .lang span{color:var(--ink-soft);font-size:.92rem;}
+  .lang:nth-child(1){border-top:3px solid var(--green);}
+  .lang:nth-child(2){border-top:3px solid var(--yellow);}
+  .lang:nth-child(3){border-top:3px solid var(--blue);}
+  .lang:nth-child(4){border-top:3px solid var(--green);}
+  .lang-note{margin-top:20px;font-style:italic;color:var(--ink-soft);}
+
+  /* ---------- GEO ---------- */
+  .geo{background:linear-gradient(135deg,var(--blue),var(--green));color:#fff;}
+  .geo .sec-label{color:rgba(255,255,255,.85);}
+  .geo .sec-label::before{background:rgba(255,255,255,.85);}
+  .geo h2{color:#fff;max-width:18ch;}
+  .geo p{font-size:1.15rem;max-width:50ch;color:rgba(255,255,255,.92);}
+
+  /* ---------- CONTACT ---------- */
+  .contact{text-align:center;padding:90px 0;}
+  .contact h2{margin-bottom:10px;}
+  .contact .sub{color:var(--ink-soft);font-size:1.1rem;margin-bottom:34px;}
+  .contact-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .clink{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);
+    border:1.6px solid var(--line);border-radius:999px;padding:12px 22px;font-weight:500;transition:all .2s;}
+  .clink:hover{border-color:var(--green);color:var(--green);transform:translateY(-2px);}
+
+  footer{text-align:center;padding:30px 0 50px;color:var(--ink-soft);font-size:.86rem;}
+
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none!important;scroll-behavior:auto!important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Rayan<span>.</span></div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#proof">Proof</a>
+      <a href="#strengths">Strengths</a>
+      <a href="#video">Video</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Consulting into B2B Sales</span>
+      <h1>I move deals<br>and <span class="hl">people</span><br>forward.</h1>
+      <!-- EDITABLE TAGLINE (default: neutral B2B). See CSS comment above for alternates. -->
+      <p class="tagline">Currently in consulting, and stepping into B2B sales. What I enjoy most is the relationship and the close.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-primary">Get in touch</a>
+        <a href="CV_Rayan_Sebti.pdf" class="btn btn-ghost" download>Download CV</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <!-- <img src="photo-hero.jpg" alt="Rayan Sebti"> -->
+    </div>
+  </div>
+</header>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="about">
+  <div class="wrap">
+    <div class="sec-label">About</div>
+    <h2>The honest version of why I am doing this.</h2>
+    <p>I am in consulting today, and I do it well. What I enjoy most, though, lives at the edge of the work. It is the conversation, the persuasion, the moment when someone decides to say yes. That is where I want to spend my time.</p>
+    <p>This move has nothing to do with chasing a trendy industry. It comes from a simple realisation about how I work best. I am at my most useful around people, reading a room, building trust quickly, keeping the energy up when a deal gets complicated. In advisory, I am always one step away from the outcome, and I would much rather be the one carrying the relationship all the way to the close.</p>
+    <p>My background is in sustainability and ESG advisory, in a broad sense rather than a very technical one. I have touched the regulatory side, the commercial side, the data, and the stakeholders. It is not the sector I am aiming for next, but it says something real about me. I am genuinely purpose-driven, and I connect deeply with a company's mission when the work actually means something.</p>
+    <p>I have been deliberate about this search. I have a clear sense of what I am good at, and of the kind of role that actually uses it. I am open across B2B sales, because what matters to me is the type of work, much more than the label on the door.</p>
+    <p class="last">And for a bit of context, I have trained combat sports for years, judo, MMA and boxing. That is where I learned to stay calm when things get hard.</p>
+  </div>
+</section>
+
+<!-- ================= PROOF ================= -->
+<section id="proof" class="proof">
+  <div class="wrap">
+    <div class="sec-label">Proof points</div>
+    <h2>Where I have already done the hard part.</h2>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <h3>A €2B+ stakeholder room</h3>
+        <p>At Accenture, I worked inside a €2B+ government subsidy negotiation for one of Europe's largest industrial operators. I owned a full workstream, and the outputs fed straight into ministerial-level discussions. I learned to hold my own with government, industrial and financial counterparts in the same room.</p>
+      </div>
+      <div class="proof-card">
+        <h3>Proposals over €1M</h3>
+        <p>I co-developed client proposals worth more than €1M. The real work was understanding what each decision-maker truly cared about, and shaping the offer around that. I have lived the full cycle, from the first pitch all the way to the close.</p>
+      </div>
+      <div class="proof-card">
+        <h3>Momentum across teams</h3>
+        <p>I coordinated six or more departments under tight commercial and regulatory deadlines, keeping everyone aligned and the work moving. Complexity tends to be where I am at my best.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHAT I'M LOOKING FOR ================= -->
+<section class="lookingfor">
+  <div class="wrap looking">
+    <div>
+      <div class="sec-label">What I am looking for</div>
+      <h2>A client-facing B2B sales role, sector open.</h2>
+    </div>
+    <div>
+      <p style="color:var(--ink-soft);font-size:1.08rem;margin-bottom:18px;">I care more about the shape of the work than the industry on the door. The roles that fit me best put me close to people and close to the outcome.</p>
+      <div class="pill-list">
+        <span class="pill">Account Executive</span>
+        <span class="pill">Business Development</span>
+        <span class="pill">Account Management</span>
+        <span class="pill">Customer Success</span>
+        <span class="pill">Commercial roles</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STRENGTHS ================= -->
+<section id="strengths" class="strengths">
+  <div class="wrap">
+    <div class="sec-label">How I work</div>
+    <h2>My top strengths, in my own words.</h2>
+    <p class="str-intro">A quick read on how I am wired, drawn from my CliftonStrengths profile.</p>
+    <div class="str-grid">
+      <div class="str-card">
+        <div class="str-num">01</div>
+        <h3>Developer</h3>
+        <p>I get a lot of satisfaction from seeing other people grow, and from helping them get there.</p>
+      </div>
+      <div class="str-card">
+        <div class="str-num">02</div>
+        <h3>Positivity</h3>
+        <p>I bring energy into a room and I keep morale up, even when things get tense.</p>
+      </div>
+      <div class="str-card">
+        <div class="str-num">03</div>
+        <h3>Woo</h3>
+        <p>I really enjoy meeting new people and winning them over. Breaking the ice comes naturally to me.</p>
+      </div>
+      <div class="str-card">
+        <div class="str-num">04</div>
+        <h3>Self-Assurance</h3>
+        <p>I trust my own judgment, and I am comfortable taking the lead and owning my decisions.</p>
+      </div>
+      <div class="str-card">
+        <div class="str-num">05</div>
+        <h3>Ideation</h3>
+        <p>I love new ideas, and connecting things that seem unrelated at first.</p>
+      </div>
+      <div class="str-card">
+        <div class="str-num">06</div>
+        <h3>Empathy</h3>
+        <p>I sense how people are feeling, and I adjust to it.</p>
+      </div>
+    </div>
+    <div class="str-download">
+      <!-- Replace href with your strengths PDF once you provide it. -->
+      <a href="Rayan_Sebti_Top_10_Strengths.pdf" download>⬇&nbsp; Download my full top 10 strengths</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VIDEO ================= -->
+<section id="video" class="video">
+  <div class="wrap">
+    <div class="sec-label">In person</div>
+    <h2>Thirty seconds is faster than a CV.</h2>
+    <p style="color:var(--ink-soft);max-width:52ch;margin-bottom:6px;">The quickest way to get a sense of how I talk and how I think.</p>
+    <!-- Replace this block with your embed (Loom, YouTube or Vimeo). -->
+    <div class="video-shell">
+      <div class="play"></div>
+      <span>VIDEO INTRO — EMBED HERE</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section id="testimonials" class="testimonials">
+  <div class="wrap">
+    <div class="sec-label">In their words</div>
+    <h2>A few words from people I have worked with.</h2>
+    <div class="quote-grid">
+      <!-- TESTIMONIAL 1 — paste real manager feedback. Then delete .placeholder and use .qquote / .qname / .qrole. -->
+      <div class="quote-card">
+        <div class="mark">“</div>
+        <p class="placeholder">Manager quote goes here. Paste the feedback, keep it to one or two sentences.</p>
+        <!-- <p class="qquote">Real quote here.</p> -->
+        <div class="qname">Name or role</div>
+        <div class="qrole">Manager, Accenture</div>
+      </div>
+      <!-- TESTIMONIAL 2 -->
+      <div class="quote-card">
+        <div class="mark">“</div>
+        <p class="placeholder">Second quote goes here, optional. Same length, same simple tone.</p>
+        <div class="qname">Name or role</div>
+        <div class="qrole">Manager / Client</div>
+      </div>
+      <!-- TESTIMONIAL 3 (optional) -->
+      <div class="quote-card">
+        <div class="mark">“</div>
+        <p class="placeholder">Third quote, optional. You can also delete this card if you only have two.</p>
+        <div class="qname">Name or role</div>
+        <div class="qrole">Colleague</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BEYOND WORK ================= -->
+<section class="beyond">
+  <div class="wrap">
+    <div>
+      <div class="sec-label">Beyond work</div>
+      <h2>The person behind the pitch.</h2>
+      <p>Outside of work, I train combat sports, judo, MMA and boxing. Years on the mat taught me to stay calm under pressure, and to keep showing up when things get hard.</p>
+      <p>I am curious by nature, and it pulls me in a lot of directions. I like picking up languages, understanding how different markets and cultures actually work, and spending time between Europe and Brazil, which is a real second home for me.</p>
+    </div>
+    <div class="photo-stack">
+      <div class="ph a"><!-- <img src="photo-sport.jpg" alt="">-->SPORT PHOTO</div>
+      <div class="ph b"><!-- <img src="photo-life.jpg" alt="">-->LIFESTYLE PHOTO</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LANGUAGES ================= -->
+<section id="languages" class="languages">
+  <div class="wrap">
+    <div class="sec-label">Languages</div>
+    <h2>Four languages, real reach.</h2>
+    <div class="lang-row">
+      <div class="lang"><strong>French</strong><span>Native</span></div>
+      <div class="lang"><strong>English</strong><span>Fluent</span></div>
+      <div class="lang"><strong>Portuguese</strong><span>Fluent</span></div>
+      <div class="lang"><strong>German</strong><span>Professional · B2/C1</span></div>
+    </div>
+    <p class="lang-note">Real reach across European and Brazilian markets.</p>
+  </div>
+</section>
+
+<!-- ================= GEO ================= -->
+<section class="geo">
+  <div class="wrap">
+    <div class="sec-label">Location</div>
+    <h2>Location comes second.</h2>
+    <p>I care far more about the right next move than a specific city. I am open across Europe, on-site or remote, and I treat that flexibility as a real asset.</p>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="sec-label" style="justify-content:center;">Contact</div>
+    <h2>Let's talk.</h2>
+    <p class="sub">Always happy to have a conversation about the right next move.</p>
+    <div class="contact-links">
+      <a class="clink" href="mailto:rayan.sebti@gmail.com">✉&nbsp; rayan.sebti@gmail.com</a>
+      <a class="clink" href="tel:+41793961554">📞&nbsp; +41 79 396 15 54</a>
+      <a class="clink" href="https://www.linkedin.com/in/rayan-sebti/" target="_blank" rel="noopener">in&nbsp; LinkedIn</a>
+      <a class="clink" href="CV_Rayan_Sebti.pdf" download>⬇&nbsp; Download CV</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Rayan Sebti · Built to find the right next move.</footer>
+
+</body>
+</html>
