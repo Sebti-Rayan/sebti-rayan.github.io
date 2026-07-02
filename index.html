@@ -7,15 +7,6 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Outfit:wght@300;400;500;600;700&display=swap');
 
-  /* ============================================================
-     PALETTE — inspired by Brazil
-     ink        #14342b  deep forest green, warm near-black
-     paper      #fbfaf2  warm off-white
-     green      #1a9e4b  Brazilian green
-     yellow     #ffce2e  Brazilian yellow
-     blue       #1c4fbf  Brazilian blue
-     blue-soft  #2f6fe0
-     ============================================================ */
   :root{
     --ink:#14342b;
     --paper:#fbfaf2;
@@ -77,10 +68,6 @@
     background:linear-gradient(120deg,var(--green),var(--yellow));
     -webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic;
   }
-  /* EDITABLE TAGLINE — swap per application round.
-     Neutral B2B (default) is live below.
-     Enterprise AE:  "Consulting background with commercial instincts. I like complex deals with a lot of people in the room, and bringing them to a yes."
-     Relationship:   "I connect with people easily and I keep things moving. Moving from consulting into sales, where the relationship really is the work." */
   .tagline{
     margin:26px 0 6px;font-size:1.2rem;color:var(--ink-soft);max-width:34ch;font-weight:400;
   }
@@ -94,7 +81,6 @@
   .btn-ghost{background:transparent;color:var(--ink);border:1.6px solid var(--ink);}
   .btn-ghost:hover{transform:translateY(-2px);background:var(--ink);color:var(--paper);}
 
-  /* hero photo — smaller, beside the text */
   .hero-photo{
     position:relative;aspect-ratio:4/5;max-width:300px;width:100%;justify-self:end;
     border-radius:22px;overflow:hidden;
@@ -169,22 +155,6 @@
   }
   .str-download a:hover{background:var(--blue);color:#fff;transform:translateY(-2px);}
 
-  /* ---------- VIDEO ---------- 
-  .video-shell{
-    aspect-ratio:16/9;border-radius:22px;overflow:hidden;
-    background:linear-gradient(135deg,var(--green),var(--blue));
-    display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;
-    box-shadow:0 18px 50px rgba(20,52,43,.18);margin-top:8px;
-  }
-  .video-shell .play{width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.92);
-    display:flex;align-items:center;justify-content:center;}
-  .video-shell .play::after{content:"";border-left:22px solid var(--green);border-top:13px solid transparent;
-    border-bottom:13px solid transparent;margin-left:5px;}
-  .video-shell span{color:#fff;font-family:'Outfit';font-weight:600;letter-spacing:.08em;font-size:.82rem;}
-  /* To go live, replace the .video-shell div with:
-     <iframe src="YOUR_LOOM_OR_YOUTUBE_EMBED" allowfullscreen
-       style="width:100%;aspect-ratio:16/9;border:0;border-radius:22px;"></iframe> */
-
   /* ---------- TESTIMONIALS ---------- */
   .testimonials{background:var(--ink);color:var(--paper);}
   .testimonials .sec-label{color:var(--yellow);}
@@ -196,9 +166,6 @@
     border-radius:18px;padding:28px;position:relative;
   }
   .quote-card .mark{font-family:'Fraunces';font-size:3rem;line-height:.5;color:var(--yellow);}
-  /* PLACEHOLDER — paste your real manager feedback here.
-     Replace the .placeholder paragraph with .qquote, then fill .qname / .qrole. */
-  .quote-card .placeholder{color:rgba(251,250,242,.5);font-style:italic;margin:14px 0 18px;font-size:1rem;}
   .quote-card .qquote{margin:14px 0 18px;font-size:1.04rem;color:var(--paper);}
   .qname{font-weight:600;color:var(--yellow);font-size:.95rem;}
   .qrole{color:rgba(251,250,242,.6);font-size:.85rem;}
@@ -271,15 +238,14 @@
     <div>
       <span class="eyebrow">Consulting into B2B Sales</span>
       <h1>I move deals<br>and <span class="hl">people</span><br>forward.</h1>
-      <!-- EDITABLE TAGLINE (default: neutral B2B). See CSS comment above for alternates. -->
-      <p class="tagline">Currently in consulting, and stepping into B2B sales. What I enjoy most is the relationship and the close.</p>
+      <p class="tagline">Over 2.5 years inside complex, multi-stakeholder deals at Accenture. Now stepping into B2B sales, where the relationship is the work.</p>
       <div class="cta-row">
         <a href="#contact" class="btn btn-primary">Get in touch</a>
         <a href="CV_Rayan_Sebti.pdf" class="btn btn-ghost" download>Download CV</a>
       </div>
     </div>
     <div class="hero-photo">
-      <img src="photo-hero.jpg" alt="Rayan Sebti"> -->
+      <img src="photo-hero.jpg" alt="Rayan Sebti">
     </div>
   </div>
 </header>
@@ -289,11 +255,10 @@
   <div class="wrap">
     <div class="sec-label">About</div>
     <h2>The honest version of why I am doing this.</h2>
-    <p>I am in consulting today, and I do it well. What I enjoy most, though, lives at the edge of the work. It is the conversation, the persuasion, the moment when someone decides to say yes. That is where I want to spend my time.</p>
-    <p>This move has nothing to do with chasing a trendy industry. It comes from a simple realisation about how I work best. I am at my most useful around people, reading a room, building trust quickly, keeping the energy up when a deal gets complicated. In advisory, I am always one step away from the outcome, and I would much rather be the one carrying the relationship all the way to the close.</p>
-    <p>My background is in sustainability and ESG advisory, in a broad sense rather than a very technical one. I have touched the regulatory side, the commercial side, the data, and the stakeholders. It is not the sector I am aiming for next, but it says something real about me. I am genuinely purpose-driven, and I connect deeply with a company's mission when the work actually means something.</p>
+    <p>I have spent over 2.5 years at Accenture working on deals that do not move without stakeholder management. The environment is complex, the counterparts are senior, and the margin for error is low. On my current project, I own a workstream inside a €2B+ government subsidy negotiation for one of Europe's largest industrial operators, and the outputs go directly into ministerial-level discussions. That is the environment I have been trained in.</p>
+    <p>The parts of consulting I do best are the ones that look most like sales. Reading a room, building trust quickly, keeping that trust when a conversation gets complicated. I want to be in a role where those things are the job, not a side effect of it.</p>
     <p>I have been deliberate about this search. I have a clear sense of what I am good at, and of the kind of role that actually uses it. I am open across B2B sales, because what matters to me is the type of work, much more than the label on the door.</p>
-    <p class="last">And for a bit of context, I have trained combat sports for years, judo and boxing. That is where I learned to stay calm when things get hard.</p>
+    <p class="last">Outside of work, I train combat sports, judo and boxing. That is where I learned to stay calm when things get hard.</p>
   </div>
 </section>
 
@@ -304,16 +269,16 @@
     <h2>Where I have already done the hard part.</h2>
     <div class="proof-grid">
       <div class="proof-card">
-        <h3>A €2B+ stakeholder room</h3>
-        <p>At Accenture, I worked inside a €2B+ government subsidy negotiation for one of Europe's largest industrial operators. I owned a full workstream, and the outputs fed straight into ministerial-level discussions. I learned to hold my own with government, industrial and financial counterparts in the same room.</p>
+        <h3>€2B+ negotiation, ministerial level</h3>
+        <p>At Accenture, I work inside a €2B+ government subsidy negotiation for one of Europe's largest industrial operators. I own a full workstream, and the outputs feed straight into ministerial-level discussions. I learned to hold my own with government, industrial and financial counterparts in the same room.</p>
       </div>
       <div class="proof-card">
-        <h3>Proposals over €1M</h3>
-        <p>I co-developed client proposals worth more than €1M. The real work was understanding what each decision-maker truly cared about, and shaping the offer around that. I have lived the full cycle, from the first pitch all the way to the close.</p>
+        <h3>€1M+ proposals, full cycle</h3>
+        <p>I have co-developed commercial proposals worth over €1M, from opportunity identification through to close, mapping what each decision-maker actually needs and building the offer around that.</p>
       </div>
       <div class="proof-card">
-        <h3>Momentum across teams</h3>
-        <p>I coordinated six or more departments under tight commercial and regulatory deadlines, keeping everyone aligned and the work moving. Complexity tends to be where I am at my best.</p>
+        <h3>6+ departments, tight deadlines</h3>
+        <p>I coordinate across six or more departments under commercial and regulatory deadlines. High complexity, tight timelines. That is consistently where I perform best.</p>
       </div>
     </div>
   </div>
@@ -378,24 +343,8 @@
       </div>
     </div>
     <div class="str-download">
-      <!-- Replace href with your strengths PDF once you provide it. -->
       <a href="Rayan_Sebti_Top_10_Strengths.pdf" download>⬇&nbsp; Download my full top 10 strengths</a>
     </div>
-  </div>
-</section>
-
-<!-- ================= VIDEO =================
-<section id="video" class="video">
-  <div class="wrap">
-    <div class="sec-label">In person</div>
-    <h2>Thirty seconds is faster than a CV.</h2>
-    <p style="color:var(--ink-soft);max-width:52ch;margin-bottom:6px;">The quickest way to get a sense of how I talk and how I think.</p>
-    <!-- Replace this block with your embed (Loom, YouTube or Vimeo). 
-  <iframe src="https://www.youtube.com/embed/6HGtWg2bjeA"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-      style="width:100%;aspect-ratio:16/9;border:0;border-radius:22px;box-shadow:0 18px 50px rgba(20,52,43,.18);margin-top:8px;">
-    </iframe>
   </div>
 </section>
 
@@ -406,22 +355,22 @@
     <h2>A few words from people I have worked with.</h2>
     <div class="quote-grid">
       <div class="quote-card">
-        <div class="mark">“</div>
+        <div class="mark">"</div>
         <p class="qquote">He is a true team player, fostering a productive working relationship. He consistently showed a proactive mindset, tackling challenges with a positive attitude.</p>
         <div class="qname">J. Z.</div>
-        <div class="qrole">Manager</div>
+        <div class="qrole">Manager · Accenture</div>
       </div>
       <div class="quote-card">
-        <div class="mark">“</div>
+        <div class="mark">"</div>
         <p class="qquote">Working with Rayan was genuinely valuable. He brought real initiative to the project, worked very independently, and always acted thoughtfully. He learns fast, questions things critically, and thinks ahead.</p>
         <div class="qname">J. E.</div>
-        <div class="qrole">Senior Manager</div>
+        <div class="qrole">Senior Manager · Accenture</div>
       </div>
       <div class="quote-card">
-        <div class="mark">“</div>
+        <div class="mark">"</div>
         <p class="qquote">Rayan's reliability and dedication are exceptional. He consistently goes the extra mile and provides unwavering support to the team.</p>
         <div class="qname">B. K.</div>
-        <div class="qrole">Senior Manager</div>
+        <div class="qrole">Senior Manager · Accenture</div>
       </div>
     </div>
   </div>
